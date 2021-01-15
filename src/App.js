@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const App = props => {
   const [state, setState] = useState(props)
   const {name, price} = state
 
+  useEffect(() => {
+    console.log('あああああああああああああ')
+  })
+
+  useEffect(() => {
+    console.log('いいいいいいいいいいいいい')
+  }, [])
+
+  useEffect(() => {
+    console.log('ううううううううううううう')
+  }, [name])
+
   return (
   <>
-  <p>現在の{name}は、{price}円です！！</p>
+  <p>現在の{name}は、{price}円です!!</p>
   <button onClick={() => setState({...state, price: state.price + 1})}>+1</button>
   <button onClick={() => setState({...state, price: state.price - 1})}>-1</button>
   <button onClick={() => setState(props)}>Reset</button>
